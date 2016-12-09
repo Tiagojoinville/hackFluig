@@ -26,6 +26,8 @@ public class SecurityRest extends WCMRest {
     
     private static Logger LOGGER = LoggerFactory.getLogger(SecurityRest.class);
     
+    
+    
     @GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/widget/{code}")
@@ -39,7 +41,10 @@ public class SecurityRest extends WCMRest {
     	String name;
     	String listDependencies;
 
-		String user;
+		
+    	
+    	
+    	String user;
 		String pass;
 
     	switch (code) {
@@ -70,6 +75,7 @@ public class SecurityRest extends WCMRest {
     	}
     }
 
+   
     
 }
 

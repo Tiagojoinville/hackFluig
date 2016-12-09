@@ -18,11 +18,17 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		
 		String javaFolder = generateJavaFolder(mainFolder);
 		String resourcesFolder = generateResourceFolder(mainFolder);
+		String resourcesMetainfFolder = generateResourceMetaInfFolder(resourcesFolder);
+		
 		
 		String webappFolder = generateWebappFolder(mainFolder);
-		String webinfWebappFolder = generateWebinfWebappFolder(mainFolder);
-		String resourcesWebappFolder = generateResourcesWebappFolder(mainFolder);
-				
+		String webinfWebappFolder = generateWebinfWebappFolder(webappFolder);
+		String resourcesWebappFolder = generateResourcesWebappFolder(webappFolder);
+		String cssFolder = generateCssFolder(resourcesWebappFolder);
+		String imagesFolder = generateImagesFolder(resourcesWebappFolder);
+		String jsFolder = generateJsFolder(resourcesWebappFolder);
+		
+		
 		return zipFile;
 	}
 	
@@ -57,5 +63,28 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 	public String generateWebappFolder(String path){
 		return generateFolder(path + "/webapp");
 	}
-
+	
+	public String generateWebinfWebappFolder(String path){
+		return generateFolder(path + "/WEB-INF");
+	}
+	
+	public String generateResourcesWebappFolder(String path){
+		return generateFolder(path + "/resources");
+	}
+	
+	public String generateCssFolder(String path){
+		return generateFolder(path + "/css");
+	}
+	
+	public String generateImagesFolder(String path){
+		return generateFolder(path + "/images");
+	}
+	
+	public String generateJsFolder(String path){
+		return generateFolder(path + "/js");
+	}
+	
+	public String generateResourceMetaInfFolder(String path){
+		return generateFolder(path + "META-INF");
+	}
 }
