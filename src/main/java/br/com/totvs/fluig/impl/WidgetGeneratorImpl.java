@@ -4,87 +4,48 @@ import java.io.File;
 
 import javax.mail.Folder;
 
+import br.com.totvs.fluig.service.FileGenerator;
+import br.com.totvs.fluig.service.FolderGenerator;
 import br.com.totvs.fluig.service.WidgetGenerator;
 
 public class WidgetGeneratorImpl implements WidgetGenerator {
 
 	public String generate(){
 		
+		String packageName = "com.totvs.fluig";
 		String zipFile = "";
+
+		/*
+		 * FOLDERS
+		 */
+		FolderGenerator folderGenerator = new FolderGeneratorImpl();
 		
-		String tempFolder = generateFolder("/app/fluig/temp");
-		String srcFolder = generateSrcFolder(tempFolder);
-		String mainFolder = generateMainFolder(srcFolder);
+		String tempFolder = folderGenerator.generateFolder("/app/fluig/temp");
+		String srcFolder = folderGenerator.generateSrcFolder(tempFolder);
+		String mainFolder = folderGenerator.generateMainFolder(srcFolder);
 		
-		String javaFolder = generateJavaFolder(mainFolder);
-		String resourcesFolder = generateResourceFolder(mainFolder);
-		String resourcesMetainfFolder = generateResourceMetaInfFolder(resourcesFolder);
+		String javaFolder = folderGenerator.generateJavaFolder(mainFolder);
+		String packages = folderGenerator.generatePackagesFolder(javaFolder,packageName);
+		
+		String resourcesFolder = folderGenerator.generateResourceFolder(mainFolder);
+		String resourcesMetainfFolder = folderGenerator.generateResourceMetaInfFolder(resourcesFolder);
 		
 		
-		String webappFolder = generateWebappFolder(mainFolder);
-		String webinfWebappFolder = generateWebinfWebappFolder(webappFolder);
-		String resourcesWebappFolder = generateResourcesWebappFolder(webappFolder);
-		String cssFolder = generateCssFolder(resourcesWebappFolder);
-		String imagesFolder = generateImagesFolder(resourcesWebappFolder);
-		String jsFolder = generateJsFolder(resourcesWebappFolder);
+		String webappFolder = folderGenerator.generateWebappFolder(mainFolder);
+		String webinfWebappFolder = folderGenerator.generateWebinfWebappFolder(webappFolder);
+		String resourcesWebappFolder = folderGenerator.generateResourcesWebappFolder(webappFolder);
+		String cssFolder = folderGenerator.generateCssFolder(resourcesWebappFolder);
+		String imagesFolder = folderGenerator.generateImagesFolder(resourcesWebappFolder);
+		String jsFolder = folderGenerator.generateJsFolder(resourcesWebappFolder);
+		
+		/*
+		 * FILES
+		 */
+		FileGenerator fileGenerator = new FileGeneratorImpl();
+		fileGenerator.createApplication(resourcesFolder);
 		
 		
 		return zipFile;
 	}
 	
-	
-	public String generateFolder(String folder){
-		
-		File file = new File(folder);
-		
-		if(!file.exists()){
-			file.mkdir();
-		}
-		
-		return folder;
-	}
-		
-	public String generateSrcFolder(String path){
-		return generateFolder(path + "/src");		
-	}
-	
-	public String generateMainFolder(String path){
-		return generateFolder(path + "/main");
-	}
-	
-	public String generateJavaFolder(String path){
-		return generateFolder(path + "/java");
-	}
-
-	public String generateResourceFolder(String path){
-		return generateFolder(path + "/resource");
-	}
-
-	public String generateWebappFolder(String path){
-		return generateFolder(path + "/webapp");
-	}
-	
-	public String generateWebinfWebappFolder(String path){
-		return generateFolder(path + "/WEB-INF");
-	}
-	
-	public String generateResourcesWebappFolder(String path){
-		return generateFolder(path + "/resources");
-	}
-	
-	public String generateCssFolder(String path){
-		return generateFolder(path + "/css");
-	}
-	
-	public String generateImagesFolder(String path){
-		return generateFolder(path + "/images");
-	}
-	
-	public String generateJsFolder(String path){
-		return generateFolder(path + "/js");
-	}
-	
-	public String generateResourceMetaInfFolder(String path){
-		return generateFolder(path + "META-INF");
-	}
 }
