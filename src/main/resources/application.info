@@ -1,0 +1,14 @@
+application.type=widget
+application.code=totvs_tdi_secure_credentials
+application.title=Secure Credentials
+application.description=Consulta de Credencias Segura
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=roberto
+developer.name=roberto.duessmann
+developer.url=http://www.fluig.com
+application.uiwidget=true
+view.file=view.ftl
+edit.file=edit.ftl
+application.resource.css.1=/resources/css/totvs_tdi_consulta_desconto.css
+application.resource.js.1=/resources/js/totvs_tdi_consulta_desconto.js

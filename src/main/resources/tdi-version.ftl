@@ -1,0 +1,1 @@
+Vers&atilde;o ${pom.version} - Fluig ${fluig.version} - Data ${timestamp}
