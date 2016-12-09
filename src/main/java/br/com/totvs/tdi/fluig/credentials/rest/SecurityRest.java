@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import com.totvs.technology.wcm.common.WCMRestResult;
 import com.totvs.technology.wcm.sdk.rest.WCMRest;
 
-@Path("/security")
+@Path("/generate")
 public class SecurityRest extends WCMRest {
 
     @PersistenceContext(name="FluigPU")
@@ -28,11 +28,16 @@ public class SecurityRest extends WCMRest {
     
     @GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/credentials/{code}")
+	@Path("/widget/{code}")
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public Response getSecureCredentials(@javax.ws.rs.core.Context HttpServletRequest req, @PathParam("code") String code) {
     	
     	LOGGER.info("getSecureCredentials code:" + code);
+    	
+    	String versionFluig;
+    	String packageName;
+    	String name;
+    	String listDependencies;
 
 		String user;
 		String pass;
