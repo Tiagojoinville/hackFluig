@@ -1,3 +1,16 @@
+$( document ).ready(function() {
+    console.log( "ready!" );
+    $('#tokenfield').tokenfield({
+    	  autocomplete: {
+    	    source: ['red','blue','green','yellow','violet','brown','purple','black','white'],
+    	    delay: 100
+    	  },
+    	  showAutocompleteOnFocus: true
+    	});
+    
+    $('.tokenfield.form-control').addClass( "formtokenfield" );
+});
+
 var ConsultaPropostaTdi = SuperWidget.extend({
 	instanceId: null,
 	
@@ -12,6 +25,7 @@ var ConsultaPropostaTdi = SuperWidget.extend({
 
 	init: function() {
 		console.log("init totvs_consulta_propostaObj ");
+		
     },
     
     consultaProposta: function() {
@@ -135,6 +149,6 @@ var ConsultaPropostaTdi = SuperWidget.extend({
 		});
 		
 	}
-
+	
     
 });
