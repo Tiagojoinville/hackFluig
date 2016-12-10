@@ -22,7 +22,13 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		String zipFile = "";
 		
 		String dirHome = "/tmp/fluig/";
-		
+
+		// Deletando um diretório vazio
+		boolean success = (new File("/tmp/fluig/")).delete();
+		if(success){
+			System.out.println("Deletei");
+		}
+
 		System.out.println("Inicio");
 
 		/*
@@ -167,6 +173,24 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 
 		zos.closeEntry();
 		fis.close();
+	}
+
+	// Deleta todos os arquivos e subdiretorios
+	// Retorna verdadeiro se todas as remoções aconteceram com sucesso.
+	// Se houve falha, o método será interrompido, e retornará falso.
+	public static boolean deleteDir(File dir) {
+		if (dir.isDirectory()) {
+			String[] children = dir.list();
+			for (int i=0; i<children.length; i++) {
+				boolean success = deleteDir(new File(dir, children[i]));
+				if (!success) {
+					return false;
+				}
+			}
+		}
+
+		// Agora o diretório está vazio, restando apenas deletá-lo.
+		return dir.delete();
 	}
 
 }
