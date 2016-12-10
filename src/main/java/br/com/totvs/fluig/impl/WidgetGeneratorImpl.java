@@ -14,16 +14,14 @@ import br.com.totvs.fluig.service.WidgetGenerator;
 
 public class WidgetGeneratorImpl implements WidgetGenerator {
 		
-	public String generate(String nameApp, String packageName, String dependencies){
+	public String generate(String nameApp, String packageName,String versionId, String dependencies){
 
 		String zipFile = "";
 		
 		System.out.println("Inicio");
 
-	     /*
-		 * POM
-		 */
-		 List<ArtefatosNexus> lstArtefatos =  getArtefatos();
+
+
 
 		/*
 		 * FOLDERS
@@ -58,7 +56,12 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		fileGenerator.createEdit(resourcesFolder, nameApp);
 		fileGenerator.createView(resourcesFolder, nameApp);
 		
-		fileGenerator.createPom(resourcesFolder, nameApp, dependencies);
+	 	/*
+		 * POM
+		 */
+		List<ArtefatosNexus> lstArtefatos =  getArtefatos();
+		fileGenerator.createPom(tempFolder, nameApp,packageName,versionId, lstArtefatos);
+
 		
 		System.out.println("Fim");
 		return zipFile;
