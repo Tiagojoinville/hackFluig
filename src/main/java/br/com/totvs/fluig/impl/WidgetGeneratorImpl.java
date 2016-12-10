@@ -59,6 +59,9 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		fileGenerator.createEdit(resourcesFolder, nameApp);
 		fileGenerator.createView(resourcesFolder, nameApp);
 		fileGenerator.createRest(packages, nameApp);
+
+		fileGenerator.createBootstrapJS(jsFolder);
+		fileGenerator.createBootstrapTokenMiniJS(jsFolder);
 		
 		
 	 	/*

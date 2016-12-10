@@ -260,4 +260,15 @@ public class FileGeneratorImpl implements FileGenerator {
 
         createFile(path, nameApp + ".java", content.toString());
     }
+
+	@Override
+	public void createBootstrapJS(String path){
+		createFile(path, "bootstrap-tokenfield.js", "");
+	}
+
+	@Override
+	public void createBootstrapTokenMiniJS(String path){
+		createFile(path, "bootstrap-tokenfield.min.js", "");
+	}
+
 }
