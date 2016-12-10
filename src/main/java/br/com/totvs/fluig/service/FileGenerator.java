@@ -1,8 +1,8 @@
 package br.com.totvs.fluig.service;
 
-import br.com.totvs.fluig.Model.ArtefatosNexus;
-
 import java.util.List;
+
+import br.com.totvs.fluig.Model.ArtefatosNexus;
 
 public interface FileGenerator {
 
@@ -18,7 +18,7 @@ public interface FileGenerator {
 
 	public void createWebXml(String path);
 
-    public void createRest(String path, String nameApp, String dependencies);
+    public void createRest(String path, String nameApp);
 
 	public void createPom(String path, String nameApp, String packageName,String versionId, List<ArtefatosNexus> lstArtefanatos);
 }

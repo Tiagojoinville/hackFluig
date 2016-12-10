@@ -1,7 +1,6 @@
 package br.com.totvs.fluig.impl;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -233,7 +232,7 @@ public class FileGeneratorImpl implements FileGenerator {
 	}
 
     @Override
-    public void createRest(String path, String nameApp, String dependencies) {
+    public void createRest(String path, String nameApp) {
 
         System.out.println("Path web.xml: " + path);
 

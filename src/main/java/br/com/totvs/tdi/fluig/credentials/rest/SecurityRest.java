@@ -1,27 +1,20 @@
 package br.com.totvs.tdi.fluig.credentials.rest;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.com.totvs.fluig.impl.FileGeneratorImpl;
 import br.com.totvs.fluig.impl.WidgetGeneratorImpl;
-import br.com.totvs.fluig.service.FileGenerator;
 import br.com.totvs.fluig.service.WidgetGenerator;
 
 import com.totvs.technology.wcm.common.WCMRestResult;
