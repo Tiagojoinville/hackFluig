@@ -46,7 +46,6 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		String resourcesFolder = folderGenerator.generateResourceFolder(mainFolder);
 		String resourcesMetainfFolder = folderGenerator.generateResourceMetaInfFolder(resourcesFolder);
 		
-		
 		String webappFolder = folderGenerator.generateWebappFolder(mainFolder);
 		String webinfWebappFolder = folderGenerator.generateWebinfWebappFolder(webappFolder);
 		String resourcesWebappFolder = folderGenerator.generateResourcesWebappFolder(webappFolder);
@@ -61,7 +60,8 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		fileGenerator.createApplication(resourcesFolder, nameApp);
 		fileGenerator.createProperties(resourcesFolder, nameApp);
 		fileGenerator.createWebXml(webinfWebappFolder);
-		
+        fileGenerator.createJbossWeb(webinfWebappFolder, nameApp);
+
 		fileGenerator.createEdit(resourcesFolder, nameApp);
 		fileGenerator.createView(resourcesFolder, nameApp);
 		fileGenerator.createRest(packages, nameApp);
@@ -69,18 +69,14 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		fileGenerator.createBootstrapJS(jsFolder);
 		fileGenerator.createBootstrapTokenMiniJS(jsFolder);
 		
-		
 	 	/*
 		 * POM
 		 */
 		List<ArtefatosNexus> lstArtefatos =  getArtefatos();
 		fileGenerator.createPom(tempFolder, nameApp,packageName,versionId, lstArtefatos);
 
-		
 		System.out.println("Fim");
-		
-		
-		
+
 		/*
 		 * ZIP
 		 */
@@ -95,8 +91,8 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 			System.out.println("---Done");
 			zipFile = dirHome + "/temp.zip";
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+            System.out.println("Erro ao exportar .zip: " + e.getMessage());
 		}
 			
 		return zipFile;
@@ -116,7 +112,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		return lstArtefatosNexus;
 	}
 	
-	public static void getAllFiles(File dir, List<File> fileList) {
+	private static void getAllFiles(File dir, List<File> fileList) {
 		try {
 			File[] files = dir.listFiles();
 			for (File file : files) {
@@ -133,7 +129,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		}
 	}
 
-	public static void writeZipFile(File directoryToZip, List<File> fileList, String dirHome) {
+    private static void writeZipFile(File directoryToZip, List<File> fileList, String dirHome) {
 
 		try {
 			FileOutputStream fos = new FileOutputStream(dirHome + "/" + directoryToZip.getName() + ".zip");
@@ -154,7 +150,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		}
 	}
 
-	public static void addToZip(File directoryToZip, File file, ZipOutputStream zos) throws FileNotFoundException,
+    private static void addToZip(File directoryToZip, File file, ZipOutputStream zos) throws FileNotFoundException,
 			IOException {
 
 		FileInputStream fis = new FileInputStream(file);

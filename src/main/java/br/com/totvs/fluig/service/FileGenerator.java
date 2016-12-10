@@ -25,4 +25,6 @@ public interface FileGenerator {
 	public void createBootstrapJS(String path);
 
 	public void createBootstrapTokenMiniJS(String path);
+
+    public void createJbossWeb(String path, String nameApp);
 }

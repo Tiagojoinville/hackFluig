@@ -191,8 +191,6 @@ public class FileGeneratorImpl implements FileGenerator {
 	@Override
 	public void createWebXml(String path) {
 
-        System.out.println("Path web.xml: " + path);
-
 		StringBuilder content = new StringBuilder();
 		content.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n");
         content.append("<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n");
@@ -234,8 +232,6 @@ public class FileGeneratorImpl implements FileGenerator {
     @Override
     public void createRest(String path, String nameApp) {
 
-        System.out.println("Path web.xml: " + path);
-
         StringBuilder content = new StringBuilder();
         content.append("package " + path + ";\n\n");
         content.append("import org.slf4j.Logger;\n");
@@ -271,4 +267,33 @@ public class FileGeneratorImpl implements FileGenerator {
 		createFile(path, "bootstrap-tokenfield.min.js", "");
 	}
 
+    @Override
+    public void createJbossWeb(String path, String nameApp) {
+
+        StringBuilder content = new StringBuilder();
+        content.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+        content.append("<jboss-web>\n");
+        content.append("<context-root>/" + nameApp + "</context-root>\n");
+        content.append("<disable-cross-context>false</disable-cross-context>\n\n");
+        content.append("<security-domain>TOTVSTech</security-domain>\n\n");
+        content.append("<security-role>\n");
+        content.append("<role-name>user</role-name>\n");
+        content.append("<principal-name>totvstech</principal-name>\n");
+        content.append("</security-role>\n");
+        content.append("<security-role>\n");
+        content.append("<role-name>totvstech</role-name>\n");
+        content.append("<principal-name>totvstech</principal-name>\n");
+        content.append("</security-role>\n");
+        content.append("<security-role>\n");
+        content.append("<role-name>sysadmin</role-name>\n");
+        content.append("<principal-name>wcmadmin</principal-name>\n");
+        content.append("</security-role>\n");
+        content.append("<security-role>\n");
+        content.append("<role-name>admin</role-name>\n");
+        content.append("<principal-name>wcmadmin</principal-name>\n");
+        content.append("</security-role>\n");
+        content.append("</jboss-web>\n");
+
+        createFile(path, "jboss-web.xml", content.toString());
+    }
 }
