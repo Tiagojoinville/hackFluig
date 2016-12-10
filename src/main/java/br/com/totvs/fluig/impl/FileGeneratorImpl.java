@@ -182,7 +182,7 @@ public class FileGeneratorImpl implements FileGenerator {
 		stringBuilder.append("				</configuration>\n");
 		stringBuilder.append("			</plugin>\n");
 		stringBuilder.append("		</plugins>\n");
-		stringBuilder.append("		<finalName>appName</finalName>\n");
+		stringBuilder.append("		<finalName>" + nameApp + "</finalName>\n");
 		stringBuilder.append("	</build>\n");
 		stringBuilder.append("</project>\n");
 
