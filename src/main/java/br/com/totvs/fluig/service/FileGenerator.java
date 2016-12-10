@@ -12,5 +12,7 @@ public interface FileGenerator {
 	
 	public void createView(String path, String nameApp);
 
+	public void createPom(String path, String nameApp, String dependencies);
+
 	public void createWebXml(String path);
 }

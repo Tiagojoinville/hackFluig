@@ -88,6 +88,10 @@ public class FileGeneratorImpl implements FileGenerator {
 
 		createFile(path, "view.ftl", content.toString());
 	}
+	
+	public void createPom(String path, String nameApp, String dependencies){
+		//TODO
+	}
 
 	@Override
 	public void createWebXml(String path) {
