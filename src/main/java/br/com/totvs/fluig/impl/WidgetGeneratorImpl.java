@@ -9,9 +9,12 @@ import br.com.totvs.fluig.service.FolderGenerator;
 import br.com.totvs.fluig.service.WidgetGenerator;
 
 public class WidgetGeneratorImpl implements WidgetGenerator {
-
-	public String generate(){
 		
+	public String generate(){
+
+		System.out.println("Inicio");
+
+		String nameApp = "totvs_something";
 		String packageName = "com.totvs.fluig";
 		String zipFile = "";
 
@@ -20,7 +23,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		 */
 		FolderGenerator folderGenerator = new FolderGeneratorImpl();
 		
-		String tempFolder = folderGenerator.generateFolder("/app/fluig/temp");
+		String tempFolder = folderGenerator.generateFolder("/tmp/fluig/temp");
 		String srcFolder = folderGenerator.generateSrcFolder(tempFolder);
 		String mainFolder = folderGenerator.generateMainFolder(srcFolder);
 		
@@ -42,9 +45,13 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		 * FILES
 		 */
 		FileGenerator fileGenerator = new FileGeneratorImpl();
-		fileGenerator.createApplication(resourcesFolder);
+		fileGenerator.createApplication(resourcesFolder, nameApp);
+		fileGenerator.createProperties(resourcesFolder, nameApp);
 		
+		fileGenerator.createEdit(resourcesFolder, nameApp);
+		fileGenerator.createView(resourcesFolder, nameApp);
 		
+		System.out.println("Fim");
 		return zipFile;
 	}
 	

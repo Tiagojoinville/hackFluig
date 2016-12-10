@@ -20,19 +20,16 @@ import com.totvs.technology.wcm.sdk.rest.WCMRest;
 
 @Path("/generate")
 public class SecurityRest extends WCMRest {
-
-    @PersistenceContext(name="FluigPU")
-    private EntityManager em;
     
     private static Logger LOGGER = LoggerFactory.getLogger(SecurityRest.class);
     
     
     
-    @GET
+    @POST
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/widget/{code}")
+	@Path("/widget")
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Response getSecureCredentials(@javax.ws.rs.core.Context HttpServletRequest req, @PathParam("code") String code) {
+	public Response getWidget(@javax.ws.rs.core.Context HttpServletRequest req, @PathParam("code") String code) {
     	
     	LOGGER.info("getSecureCredentials code:" + code);
     	
