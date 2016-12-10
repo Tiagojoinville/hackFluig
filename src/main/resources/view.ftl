@@ -51,21 +51,21 @@
 			</span>
 		</div>
 	</div>
-	
+
 	<div class="col-sm-12 col-md-6">
 	  	<button type="submit" id="btn-generator" onclick="ConsultaPropostaTdi.getWidgets();" tabindex="12" class="btn btn-success">
 		Generate Project
 		</button>
    	</div>
-   	
-  	<div class="col-sm-12 col-md-6 alert alert-success" id="myElem"
+	
+	
+		
+</div>
+  	<div class="col-sm-12 col-md-7 alert alert-success" id="myElem"
 	style="display:none;" role="alert">Well done! You successfully read this
 	important alert message.
 	</div>
 
-
-		
-</div>
 </div>
 
 
