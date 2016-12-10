@@ -1,9 +1,13 @@
 package br.com.totvs.fluig.impl;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.mail.Folder;
 
+
+import br.com.totvs.fluig.Model.ArtefatosNexus;
 import br.com.totvs.fluig.service.FileGenerator;
 import br.com.totvs.fluig.service.FolderGenerator;
 import br.com.totvs.fluig.service.WidgetGenerator;
@@ -17,6 +21,11 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		String nameApp = "totvs_something";
 		String packageName = "com.totvs.fluig";
 		String zipFile = "";
+
+	     /*
+		 * POM
+		 */
+		 List<ArtefatosNexus> lstArtefatos =  getArtefatos();
 
 		/*
 		 * FOLDERS
@@ -53,6 +62,20 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		
 		System.out.println("Fim");
 		return zipFile;
+	}
+
+	public List<ArtefatosNexus> getArtefatos(){
+		List<ArtefatosNexus> lstArtefatosNexus = new ArrayList<>();
+		ArtefatosNexus artefatosNexus = new ArtefatosNexus();
+		artefatosNexus.setGroupId("org.json");
+		artefatosNexus.setArtefato("json");
+		artefatosNexus.setVersion("20160810");
+		lstArtefatosNexus.add(artefatosNexus);
+		artefatosNexus.setGroupId("com.att.inno");
+		artefatosNexus.setArtefato("log4j");
+		artefatosNexus.setVersion("1.2.11");
+		lstArtefatosNexus.add(artefatosNexus);
+		return lstArtefatosNexus;
 	}
 	
 }
