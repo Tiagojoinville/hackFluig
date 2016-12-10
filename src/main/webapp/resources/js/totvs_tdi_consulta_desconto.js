@@ -100,7 +100,7 @@ var ConsultaPropostaTdi = SuperWidget.extend({
 			}
 		});
 		
-		var url2 = "/totvs_tdi_secure_credentials/api/rest/generate/get/
+		var url2 = "/totvs_tdi_secure_credentials/api/rest/generate/get/";
 		
 		$.ajax({
 			type: "GET",
