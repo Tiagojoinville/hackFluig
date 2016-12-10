@@ -22,9 +22,7 @@ public interface FileGenerator {
 
 	public void createPom(String path, String nameApp, String packageName,String versionId, List<ArtefatosNexus> lstArtefanatos);
 
-	public void createBootstrapJS(String path);
-
-	public void createBootstrapTokenMiniJS(String path);
-
     public void createJbossWeb(String path, String nameApp);
+
+    public void createCssFile(String path, String nameApp);
 }

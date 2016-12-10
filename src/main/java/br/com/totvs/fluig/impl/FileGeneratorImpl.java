@@ -257,16 +257,6 @@ public class FileGeneratorImpl implements FileGenerator {
         createFile(path, nameApp + ".java", content.toString());
     }
 
-	@Override
-	public void createBootstrapJS(String path){
-		createFile(path, "bootstrap-tokenfield.js", "");
-	}
-
-	@Override
-	public void createBootstrapTokenMiniJS(String path){
-		createFile(path, "bootstrap-tokenfield.min.js", "");
-	}
-
     @Override
     public void createJbossWeb(String path, String nameApp) {
 
@@ -295,5 +285,14 @@ public class FileGeneratorImpl implements FileGenerator {
         content.append("</jboss-web>\n");
 
         createFile(path, "jboss-web.xml", content.toString());
+    }
+
+    @Override
+    public void createCssFile(String path, String nameApp) {
+
+        StringBuilder content = new StringBuilder();
+        content.append("<!-- Coloque aqui seu codigo CSS -->\n\n");
+
+        createFile(path, nameApp + ".css", content.toString());
     }
 }
