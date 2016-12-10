@@ -22,7 +22,13 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		String zipFile = "";
 		
 		String dirHome = "D:\\fluig\\jboss\\standalone\\tmp\\";
-		
+
+		// Deletando um diretório vazio
+		boolean success = (new File("D:\\fluig\\jboss\\standalone\\tmp\\temp")).delete();
+		if(success){
+			System.out.println("Deletei");
+		}
+
 		System.out.println("Inicio");
 
 		/*
@@ -40,7 +46,6 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		String resourcesFolder = folderGenerator.generateResourceFolder(mainFolder);
 		String resourcesMetainfFolder = folderGenerator.generateResourceMetaInfFolder(resourcesFolder);
 		
-		
 		String webappFolder = folderGenerator.generateWebappFolder(mainFolder);
 		String webinfWebappFolder = folderGenerator.generateWebinfWebappFolder(webappFolder);
 		String resourcesWebappFolder = folderGenerator.generateResourcesWebappFolder(webappFolder);
@@ -55,23 +60,21 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		fileGenerator.createApplication(resourcesFolder, nameApp);
 		fileGenerator.createProperties(resourcesFolder, nameApp);
 		fileGenerator.createWebXml(webinfWebappFolder);
-		
-		fileGenerator.createEdit(resourcesFolder, nameApp);
+        fileGenerator.createJbossWeb(webinfWebappFolder, nameApp);
+        fileGenerator.createCssFile(cssFolder, nameApp);
+
+        fileGenerator.createEdit(resourcesFolder, nameApp);
 		fileGenerator.createView(resourcesFolder, nameApp);
 		fileGenerator.createRest(packages, nameApp);
-		
-		
+
 	 	/*
 		 * POM
 		 */
 		List<ArtefatosNexus> lstArtefatos =  getArtefatos();
 		fileGenerator.createPom(tempFolder, nameApp,packageName,versionId, lstArtefatos);
 
-		
 		System.out.println("Fim");
-		
-		
-		
+
 		/*
 		 * ZIP
 		 */
@@ -86,8 +89,8 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 			System.out.println("---Done");
 			zipFile = dirHome + "/temp.zip";
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+            System.out.println("Erro ao exportar .zip: " + e.getMessage());
 		}
 			
 		return zipFile;
@@ -107,7 +110,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		return lstArtefatosNexus;
 	}
 	
-	public static void getAllFiles(File dir, List<File> fileList) {
+	private static void getAllFiles(File dir, List<File> fileList) {
 		try {
 			File[] files = dir.listFiles();
 			for (File file : files) {
@@ -124,7 +127,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		}
 	}
 
-	public static void writeZipFile(File directoryToZip, List<File> fileList, String dirHome) {
+    private static void writeZipFile(File directoryToZip, List<File> fileList, String dirHome) {
 
 		try {
 			FileOutputStream fos = new FileOutputStream(dirHome + "/" + directoryToZip.getName() + ".zip");
@@ -145,7 +148,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		}
 	}
 
-	public static void addToZip(File directoryToZip, File file, ZipOutputStream zos) throws FileNotFoundException,
+    private static void addToZip(File directoryToZip, File file, ZipOutputStream zos) throws FileNotFoundException,
 			IOException {
 
 		FileInputStream fis = new FileInputStream(file);
@@ -164,6 +167,24 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 
 		zos.closeEntry();
 		fis.close();
+	}
+
+	// Deleta todos os arquivos e subdiretorios
+	// Retorna verdadeiro se todas as remoções aconteceram com sucesso.
+	// Se houve falha, o método será interrompido, e retornará falso.
+	public static boolean deleteDir(File dir) {
+		if (dir.isDirectory()) {
+			String[] children = dir.list();
+			for (int i=0; i<children.length; i++) {
+				boolean success = deleteDir(new File(dir, children[i]));
+				if (!success) {
+					return false;
+				}
+			}
+		}
+
+		// Agora o diretório está vazio, restando apenas deletá-lo.
+		return dir.delete();
 	}
 
 }

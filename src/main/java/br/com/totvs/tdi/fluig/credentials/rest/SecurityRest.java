@@ -3,11 +3,7 @@ package br.com.totvs.tdi.fluig.credentials.rest;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -20,10 +16,13 @@ import br.com.totvs.fluig.service.WidgetGenerator;
 import com.totvs.technology.wcm.common.WCMRestResult;
 import com.totvs.technology.wcm.sdk.rest.WCMRest;
 
+import java.io.File;
+
 @Path("/generate")
 public class SecurityRest extends WCMRest {
     
     private static Logger LOGGER = LoggerFactory.getLogger(SecurityRest.class);
+	private static final String FILE_PATH = "D:\\fluig\\jboss\\standalone\\tmp\\temp.zip";
 
     @POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -61,4 +60,15 @@ public class SecurityRest extends WCMRest {
 
     	}
     }
+
+	@GET
+	@Path("/get")
+	@Produces(MediaType.APPLICATION_OCTET_STREAM)
+	public Response getFile(@javax.ws.rs.core.Context HttpServletRequest req) {
+		File file = new File(FILE_PATH);
+		Response.ResponseBuilder response = Response.ok((Object) file);
+		response.header("Content-Disposition", "attachment; filename=" + FILE_PATH);
+		return response.build();
+
+	}
 }

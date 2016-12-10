@@ -21,4 +21,8 @@ public interface FileGenerator {
     public void createRest(String path, String nameApp);
 
 	public void createPom(String path, String nameApp, String packageName,String versionId, List<ArtefatosNexus> lstArtefanatos);
+
+    public void createJbossWeb(String path, String nameApp);
+
+    public void createCssFile(String path, String nameApp);
 }
