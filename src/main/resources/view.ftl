@@ -53,7 +53,7 @@
 	</div>
 
 	<div class="col-sm-12 col-md-6">
-	  	<button type="submit" id="btn-generator" onclick="ConsultaPropostaTdi.getWidgets();" tabindex="12" class="btn btn-success">
+	  	<button type="submit" id="btn-generator" style="color: #58595b;background-color: #fff;border-color: #ccc;" onclick="ConsultaPropostaTdi.getWidgets();" tabindex="12" class="btn btn-success">
 		Generate Project
 		</button>
    	</div>
