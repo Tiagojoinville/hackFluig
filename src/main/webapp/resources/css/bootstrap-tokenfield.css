@@ -19,7 +19,7 @@
     border-color: #b94a48;
   }
 }
-@keyframes blink {
+@keyframes blink { 
   0% {
     border-color: #ededed;
   }

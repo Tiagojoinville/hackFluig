@@ -5,11 +5,11 @@
     height: auto!important;
   }
 </style>
-<form>
+<form> 
 <div id="consultaDesconto" class="bootstrap">
 <div clas="row">
 	
-	<div class="col-sm-12 col-md-6">
+	<div class="col-sm-12 col-md-6"> 
 		<h2>Project Metadata</h2>
 		<p>Artifact coordinates</p>
 		<div class="form-group groupid-form-group">
