@@ -93,8 +93,8 @@ public class FileGeneratorImpl implements FileGenerator {
 	public void createPom(String path, String nameApp, String packageName,String versionId, List<ArtefatosNexus> lstArtefanatos){
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-		stringBuilder.append("<project xmlns=\"http://maven.apache.org/POM4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\n");
-		stringBuilder.append("	xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd>\n");
+		stringBuilder.append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+		stringBuilder.append("	xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd>\"\n");
 		stringBuilder.append("	<modelVersion>4.0.0</modelVersion>\n");
 		stringBuilder.append("        <groupId> " + packageName +"</groupId>\n");
 		stringBuilder.append("	<artifactId>" + nameApp + "</artifactId>\n");
@@ -119,7 +119,8 @@ public class FileGeneratorImpl implements FileGenerator {
 		stringBuilder.append("		</dependency>\n");
 
 		for(ArtefatosNexus artefatos : lstArtefanatos){
-			stringBuilder.append("		    <groupId> " + artefatos.getGroupId() +"</groupId>\n");
+			stringBuilder.append("		<dependency>\n");
+			stringBuilder.append("		    <groupId>" + artefatos.getGroupId() +"</groupId>\n");
 			stringBuilder.append("		    <artifactId>" + artefatos.getArtefato() + "</artifactId>\n");
 			stringBuilder.append("		    <version>" + artefatos.getVersion() + "</version>\n");
 			stringBuilder.append("		</dependency>\n");
