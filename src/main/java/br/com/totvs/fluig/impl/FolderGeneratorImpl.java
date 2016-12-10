@@ -18,60 +18,60 @@ public class FolderGeneratorImpl implements FolderGenerator{
 	}
 		
 	public String generateSrcFolder(String path){
-		return generateFolder(path + "/src");		
+		return generateFolder(path + "/src/");		
 	}
 	
 	public String generateMainFolder(String path){
-		return generateFolder(path + "/main");
+		return generateFolder(path + "/main/");
 	}
 	
 	public String generateJavaFolder(String path){
-		return generateFolder(path + "/java");
+		return generateFolder(path + "/java/");
 	}
 
 	public String generateResourceFolder(String path){
-		return generateFolder(path + "/resources");
+		return generateFolder(path + "/resources/");
 	}
 
 	public String generateWebappFolder(String path){
-		return generateFolder(path + "/webapp");
+		return generateFolder(path + "/webapp/");
 	}
 	
 	public String generateWebinfWebappFolder(String path){
-		return generateFolder(path + "/WEB-INF");
+		return generateFolder(path + "/WEB-INF/");
 	}
 	
 	public String generateResourcesWebappFolder(String path){
-		return generateFolder(path + "/resources");
+		return generateFolder(path + "/resources/");
 	}
 	
 	public String generateCssFolder(String path){
-		return generateFolder(path + "/css");
+		return generateFolder(path + "/css/");
 	}
 	
 	public String generateImagesFolder(String path){
-		return generateFolder(path + "/images");
+		return generateFolder(path + "/images/");
 	}
 	
 	public String generateJsFolder(String path){
-		return generateFolder(path + "/js");
+		return generateFolder(path + "/js/");
 	}
 	
 	public String generateResourceMetaInfFolder(String path){
-		return generateFolder(path + "META-INF");
+		return generateFolder(path + "META-INF/");
 	}
 	
 	public String generatePackagesFolder(String path, String packageName){
 		
-		String packagesFolder = "";
-		String[] eachPackage = packageName.split(".");
+		System.out.println("packageName:" + packageName);
 		
+		String[] eachPackage = packageName.split("\\.");
+
 		for (String folder : eachPackage) {
-			packagesFolder = generateFolder(path + folder);
-			
+			path = generateFolder(path + "/" + folder + "/");
 		}
-		
-		return packagesFolder;
+		System.out.println("path: " + path);
+		return path;
 	}
 
 
