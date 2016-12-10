@@ -15,4 +15,6 @@ public interface FileGenerator {
 	public void createPom(String path, String nameApp, String dependencies);
 
 	public void createWebXml(String path);
+
+    public void createRest(String path, String nameApp, String dependencies);
 }

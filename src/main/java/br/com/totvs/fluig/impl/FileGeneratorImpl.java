@@ -135,4 +135,34 @@ public class FileGeneratorImpl implements FileGenerator {
 
 		createFile(path, "web.xml", content.toString());
 	}
+
+    @Override
+    public void createRest(String path, String nameApp, String dependencies) {
+
+        System.out.println("Path web.xml: " + path);
+
+        StringBuilder content = new StringBuilder();
+        content.append("package " + path + ";\n\n");
+        content.append("import org.slf4j.Logger;\n");
+        content.append("import org.slf4j.LoggerFactory;\n");
+        content.append("import javax.servlet.http.HttpServletRequest;\n");
+        content.append("import javax.ejb.TransactionAttributeType;\n");
+        content.append("import javax.ejb.TransactionAttribute;\n");
+        content.append("import javax.ws.rs.*;\n");
+        content.append("import com.totvs.technology.wcm.common.WCMRestResult;\n");
+        content.append("import com.totvs.technology.wcm.sdk.rest.WCMRest;\n\n");
+
+        content.append("@Path(/" + nameApp + "\n");
+        content.append("public class " +  nameApp + "extends WCMRest {\n\n");
+        content.append("private static Logger LOGGER = LoggerFactory.getLogger("+ nameApp + ".class);\n\n");
+
+        content.append("@GET\n");
+        content.append("@Path(/request)\n");
+        content.append("@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)\n");
+        content.append("public Response getWidget(@javax.ws.rs.core.Context HttpServletRequest req) {\n");
+        content.append("return this.buildJSONResponse(new WCMRestResult(finalPath));\n");
+        content.append("}\n");
+
+        createFile(path, nameApp + ".java", content.toString());
+    }
 }
