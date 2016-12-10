@@ -1,6 +1,62 @@
 <div class="wcm-widget-class super-widget fluig-style-guide" id="consultaDesconto_${instanceId}" data-params="ConsultaPropostaTdi.instance({instanceId: '${instanceId!''}'})" >
+<style>
+  formtokenfield {
+    min-height: 34px!important;
+    height: auto!important;
+  }
+</style>
+<form> 
+<div id="consultaDesconto" class="bootstrap">
+<div clas="row">
+	
+	<div class="col-sm-12 col-md-6"> 
+		<h2>Project Metadata</h2>
+		<p>Artifact coordinates</p>
+		<div class="form-group groupid-form-group">
+			<label for="groupId" class="control-label">Group</label>
+			<input tabindex="3" id="groupId" class="form-control" type="text"
+				value="com.example" name="groupId">
+		</div>
+		<div class="form-group artifactid-form-group">
+			<label for="artifactId" class="control-label">Artifact</label>
+			<input tabindex="4" id="artifactId" class="form-control" type="text"
+				value="demo" name="artifactId">
+		</div>
+		
+	</div>
 
-	<div id="consultaDesconto" class="bootstrap">
+	<div class="col-sm-12 col-md-6">
+		<h2>Dependencies</h2>
+		<p>Add Spring Boot Starters and dependencies to your application</p>
+		<div class="form-group">
+			<label for="autocomplete" class="control-label">Search for dependencies</label>
+			<span class="twitter-typeahead" style="position: relative; display: inline-block;">
+						
+					<input type="text" class="form-control" id="tokenfield-typeahead" value="rest,,ojdbc" />
+						
+						<pre aria-hidden="true"
+							style="position: absolute; visibility: hidden; white-space: pre; font-family: monospace; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">spring</pre>
+						<div class="tt-menu tt-empty"
+							style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+							<div class="tt-dataset tt-dataset-starters"></div>
+						</div>
+			</span>
+		</div>
+	</div>
+	
+	<div class="col-sm-12 col-md-6">
+	  	<button type="submit" id="btn-generator" tabindex="12" class="btn btn-primary btn-lg">
+		Generate Project
+		<kbd>alt + ⏎</kbd>
+		</button>
+   	</div>
+		
+</div>
+</div>
+
+
+</form>
+	<!-- <div id="consultaDesconto" class="bootstrap">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10" role="main">
@@ -60,5 +116,5 @@
         		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       		</div>
    		</div>
-  	</div>
+  	</div> -->
 </div>
