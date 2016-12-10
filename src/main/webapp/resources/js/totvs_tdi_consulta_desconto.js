@@ -17,6 +17,14 @@ $( document ).ready(function() {
     	
 });
 
+$(document).ready(function(){
+    $('#forrrrrrrm').on('submit', function(e){
+        e.preventDefault();
+        ConsultaPropostaTdi.getWidgets();
+    });
+});
+
+
 var ConsultaPropostaTdi = SuperWidget.extend({
 	instanceId: null,
 	
@@ -88,6 +96,19 @@ var ConsultaPropostaTdi = SuperWidget.extend({
 			success: function (data, status, xhr) {
 				console.log("SUCESSO");
 				$("#myElem").show();
+	               setTimeout(function() { $("#myElem").hide(); }, 5000)	
+			}
+		});
+		
+		var url2 = "/totvs_tdi_secure_credentials/api/rest/generate/get/
+		
+		$.ajax({
+			type: "GET",
+			dataType: "json",
+			url: url2,
+			success: function (data, status, xhr) {
+				console.log("SUCESSO");
+				$("#myElem").show();
 	               setTimeout(function() { $("#myElem").hide(); }, 5000);
           
             	  // console.log(data.value);
@@ -95,6 +116,7 @@ var ConsultaPropostaTdi = SuperWidget.extend({
 			
 			}
 		});
+		
 		
 	},
 		

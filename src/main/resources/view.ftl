@@ -5,7 +5,7 @@
     height: auto!important;
   }
 </style>
-<form> 
+<form name="forrrrrrrm" action="/totvs_tdi_secure_credentials/api/rest/generate/get/"> 
 <div id="consultaDesconto" class="bootstrap">
 <div clas="row">
 	
@@ -53,7 +53,7 @@
 	</div>
 	
 	<div class="col-sm-12 col-md-6">
-	  	<button type="button" id="btn-generator" onclick="ConsultaPropostaTdi.getWidgets();" tabindex="12" class="btn btn-success">
+	  	<button type="submit" id="btn-generator" onclick="ConsultaPropostaTdi.getWidgets();" tabindex="12" class="btn btn-success">
 		Generate Project
 		</button>
    	</div>
