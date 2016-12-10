@@ -16,8 +16,10 @@
 		<div class="form-group groupid-form-group">
 		<select id="selectVersion" class="btn dropdown-toggle btn-default">
 		  <option>1.5.0</option>
+		   <option>1.5.6</option>
 		  <option>1.5.12</option>
-		  <option>1.6.0</option>
+	  	  <option>1.5.13</option>
+		  <option>1.6</option>
 		</select>
 		</div>
 		<div class="form-group groupid-form-group">
@@ -39,7 +41,7 @@
 			<label for="autocomplete" class="control-label">Selecione as dependências</label>
 			<span class="twitter-typeahead" style="position: relative; display: inline-block;">
 						
-					<input type="text" class="form-control" id="tokenfield-typeahead" value="json,apache-log4j" />
+					<input type="text" class="form-control" id="tokenfield-typeahead" value="Rest" />
 						
 						<pre aria-hidden="true"
 							style="position: absolute; visibility: hidden; white-space: pre; font-family: monospace; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">spring</pre>
