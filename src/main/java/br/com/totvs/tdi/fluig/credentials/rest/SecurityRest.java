@@ -8,7 +8,11 @@ import javax.persistence.PersistenceContext;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.*;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -28,24 +32,24 @@ public class SecurityRest extends WCMRest {
     
     private static Logger LOGGER = LoggerFactory.getLogger(SecurityRest.class);
 
-    @GET
+    @POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/widget")
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Response getWidget(@javax.ws.rs.core.Context HttpServletRequest req, @PathParam("dependecies") String dependecies) {
+	public Response getWidget(@javax.ws.rs.core.Context HttpServletRequest req, @QueryParam("dependecies") String dependencies,
+			@QueryParam("nameApp") String nameApp, @QueryParam("packageName") String packageName, @QueryParam("versionFluig") String versionFluig) {
     	
     	LOGGER.info("getWidget");
     	    	
-    	String versionFluig;
-    	String nameApp = "totvs_something";
-		String packageName = "com.totvs.fluig";
-		String dependencies = "org,abc";
+    	//String versionFluig;
+    	//String  = "totvs_something";
+		//String  = "com.totvs.fluig";
 
     	WidgetGenerator wdgt = new WidgetGeneratorImpl();
 
 		try {
-	    	String finalPath = wdgt.generate(nameApp, packageName, dependencies);
+	    	String finalPath = wdgt.generate(nameApp, packageName, versionFluig, dependencies);
 	    	return this.buildJSONResponse(new WCMRestResult(finalPath));
 
     	} catch (Exception e){
