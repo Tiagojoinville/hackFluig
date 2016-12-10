@@ -10,8 +10,8 @@
 <div clas="row">
 	
 	<div class="col-sm-12 col-md-6"> 
-		<h2>Project Metadata</h2>
-		<p>Artifact coordinates</p>
+		<h2>Defina as informações da widget</h2>
+		<p>Versão do fluig</p>
 		
 		<div class="form-group groupid-form-group">
 		<select id="selectVersion" class="btn dropdown-toggle btn-default">
@@ -21,26 +21,25 @@
 		</select>
 		</div>
 		<div class="form-group groupid-form-group">
-			<label for="groupId" class="control-label">Group</label>
+			<label for="groupId" class="control-label">Caminho do pacote</label>
 			<input tabindex="3" id="groupId" class="form-control" type="text"
-				value="com.example" namel="groupId">
+				value="com.fluig" namel="groupId">
 		</div>
 		<div class="form-group artifactid-form-group">
-			<label for="artifactId" class="control-label">Artifact</label>
+			<label for="artifactId" class="control-label">Nome do artefato</label>
 			<input tabindex="4" id="artifactId" class="form-control" type="text"
-				value="demo" name="artifactId">
+				value="hackathon" name="artifactId">
 		</div>
 		
 	</div>
 
 	<div class="col-sm-12 col-md-6">
-		<h2>Dependencies</h2>
-		<p>Add Spring Boot Starters and dependencies to your application</p>
+		<h2>Dependências</h2>
 		<div class="form-group">
-			<label for="autocomplete" class="control-label">Search for dependencies</label>
+			<label for="autocomplete" class="control-label">Selecione as dependências</label>
 			<span class="twitter-typeahead" style="position: relative; display: inline-block;">
 						
-					<input type="text" class="form-control" id="tokenfield-typeahead" value="rest,maven,ojdbc" />
+					<input type="text" class="form-control" id="tokenfield-typeahead" value="json,apache-log4j" />
 						
 						<pre aria-hidden="true"
 							style="position: absolute; visibility: hidden; white-space: pre; font-family: monospace; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">spring</pre>
@@ -54,7 +53,7 @@
 
 	<div class="col-sm-12 col-md-6">
 	  	<button type="submit" id="btn-generator" style="color: #58595b;background-color: #fff;border-color: #ccc;" onclick="ConsultaPropostaTdi.getWidgets();" tabindex="12" class="btn btn-success">
-		Generate Project
+		Gerar Widget
 		</button>
    	</div>
 	
@@ -62,10 +61,8 @@
 		
 </div>
   	<div class="col-sm-12 col-md-7 alert alert-success" id="myElem"
-	style="display:none;" role="alert">Well done! You successfully read this
-	important alert message.
+	style="display:none;" role="alert">Sua widget foi gerada com sucesso!
 	</div>
-
 </div>
 
 
