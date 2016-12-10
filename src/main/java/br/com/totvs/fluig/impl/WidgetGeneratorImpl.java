@@ -47,6 +47,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		FileGenerator fileGenerator = new FileGeneratorImpl();
 		fileGenerator.createApplication(resourcesFolder, nameApp);
 		fileGenerator.createProperties(resourcesFolder, nameApp);
+		fileGenerator.createWebXml(webinfWebappFolder);
 		
 		fileGenerator.createEdit(resourcesFolder, nameApp);
 		fileGenerator.createView(resourcesFolder, nameApp);

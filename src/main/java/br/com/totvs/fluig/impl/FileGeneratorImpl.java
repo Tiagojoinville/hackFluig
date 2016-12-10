@@ -22,11 +22,14 @@ public class FileGeneratorImpl implements FileGenerator {
 		    writer.write(content);
 		    
 		} catch (IOException ex) {
-		  // report
-		} finally {
-		   try {writer.close();} catch (Exception ex) {/*ignore*/}
+            System.out.println("Erro ao gerar arquivo: " + ex.getMessage());
+        } finally {
+		   try {
+               writer.close();
+           } catch (Exception ex) {
+                System.out.println("Erro ao gerar arquivo: " + ex.getMessage());
+           }
 		}
-				
 	}
 	
 	public void createApplication(String path, String nameApp){
@@ -49,7 +52,6 @@ public class FileGeneratorImpl implements FileGenerator {
 	    content.append("application.resource.js.1=/resources/js/" + nameApp + ".js");
 	    
 	    createFile(path, "application.info", content.toString());
-	    
 	}
 	
 	public void createProperties(String path, String nameApp){
@@ -86,6 +88,47 @@ public class FileGeneratorImpl implements FileGenerator {
 
 		createFile(path, "view.ftl", content.toString());
 	}
-	
-	
+
+	@Override
+	public void createWebXml(String path) {
+
+        System.out.println("Path web.xml: " + path);
+
+		StringBuilder content = new StringBuilder();
+		content.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n");
+        content.append("<web-app xmlns=\"http://java.sun.com/xml/ns/javaee\"\n");
+        content.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n");
+        content.append("xsi:schemaLocation=\"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd\"\n");
+        content.append(" version=\"3.0\">\n\n");
+
+        content.append("<session-config>\n");
+        content.append("<session-timeout>30</session-timeout>\n");
+        content.append("</session-config>\n\n");
+
+		content.append("<security-constraint>\n");
+		content.append("<display-name>REST</display-name>\n");
+		content.append("<web-resource-collection>\n");
+		content.append("<web-resource-name>REST</web-resource-name>\n");
+		content.append("<description>REST</description>\n");
+		content.append("<url-pattern>/api/rest/*</url-pattern>\n");
+		content.append("</web-resource-collection>\n");
+		content.append("<auth-constraint>\n");
+        content.append("<description>REST</description>\n");
+        content.append("<role-name>user</role-name>\n");
+        content.append("</auth-constraint>\n");
+        content.append("</security-constraint>\n\n");
+
+        content.append("<security-role>\n");
+        content.append("<role-name>totvstech</role-name>\n");
+        content.append("</security-role>\n");
+        content.append("<security-role>\n");
+        content.append("<role-name>user</role-name>\n");
+        content.append("</security-role>\n");
+        content.append("<security-role>\n");
+        content.append("<role-name>sysadmin</role-name>\n");
+        content.append("</security-role>\n");
+        content.append("</web-app>");
+
+		createFile(path, "web.xml", content.toString());
+	}
 }

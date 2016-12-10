@@ -11,4 +11,6 @@ public interface FileGenerator {
 	public void createEdit(String path, String nameApp);
 	
 	public void createView(String path, String nameApp);
+
+	public void createWebXml(String path);
 }

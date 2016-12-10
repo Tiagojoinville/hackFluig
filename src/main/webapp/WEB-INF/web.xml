@@ -21,8 +21,7 @@
 			<role-name>user</role-name>
 		</auth-constraint>
 	</security-constraint>
-	
-    
+
 	<security-role>
 		<role-name>totvstech</role-name>
 	</security-role>

@@ -46,19 +46,15 @@ public class GetNexusInfoImpl implements GetNexusInfo {
 	    return sb.toString();
 	  }
 	
-	private static JSONObject readJsonFromUrl(String url) 
-            throws IOException, JSONException 
-    { 
+	private static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
 		InputStream is = new URL(url).openStream(); 
-        try 
-        	{ 
-        	System.out.println("DEBUGG");
-	            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8"))); 
-	            String jsonText = readAll(rd); 
-	            JSONObject json = new JSONObject(jsonText); 
-	            return json; 
-            } 
-        finally { 
+        try {
+			System.out.println("DEBUG");
+			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+			String jsonText = readAll(rd);
+			JSONObject json = new JSONObject(jsonText);
+			return json;
+		} finally {
         	is.close(); 
         }
     }
