@@ -32,7 +32,7 @@
 			<label for="autocomplete" class="control-label">Search for dependencies</label>
 			<span class="twitter-typeahead" style="position: relative; display: inline-block;">
 						
-					<input type="text" class="form-control1" id="tokenfield" value="red,green,blue" />
+					<input type="text" class="form-control" id="tokenfield-typeahead" value="rest,,ojdbc" />
 						
 						<pre aria-hidden="true"
 							style="position: absolute; visibility: hidden; white-space: pre; font-family: monospace; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">spring</pre>
@@ -43,6 +43,13 @@
 			</span>
 		</div>
 	</div>
+	
+	<div class="col-sm-12 col-md-6">
+	  	<button type="submit" id="btn-generator" tabindex="12" class="btn btn-primary btn-lg">
+		Generate Project
+		<kbd>alt + ⏎</kbd>
+		</button>
+   	</div>
 		
 </div>
 </div>
