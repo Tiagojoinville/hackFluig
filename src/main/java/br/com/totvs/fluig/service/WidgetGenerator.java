@@ -4,6 +4,6 @@ import java.io.File;
 
 public interface WidgetGenerator {
 
-	public String generate();
+	public String generate(String nameApp, String packageName, String dependecies);
 	
 }

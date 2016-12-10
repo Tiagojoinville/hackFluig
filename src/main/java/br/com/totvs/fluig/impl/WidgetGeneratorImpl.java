@@ -14,13 +14,11 @@ import br.com.totvs.fluig.service.WidgetGenerator;
 
 public class WidgetGeneratorImpl implements WidgetGenerator {
 		
-	public String generate(){
+	public String generate(String nameApp, String packageName, String dependencies){
 
-		System.out.println("Inicio");
-
-		String nameApp = "totvs_something";
-		String packageName = "com.totvs.fluig";
 		String zipFile = "";
+		
+		System.out.println("Inicio");
 
 	     /*
 		 * POM
@@ -59,6 +57,8 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		
 		fileGenerator.createEdit(resourcesFolder, nameApp);
 		fileGenerator.createView(resourcesFolder, nameApp);
+		
+		fileGenerator.createPom(resourcesFolder, nameApp, dependencies);
 		
 		System.out.println("Fim");
 		return zipFile;

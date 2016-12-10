@@ -1,19 +1,28 @@
 package br.com.totvs.tdi.fluig.credentials.rest;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import br.com.totvs.fluig.impl.FileGeneratorImpl;
+import br.com.totvs.fluig.impl.WidgetGeneratorImpl;
+import br.com.totvs.fluig.service.FileGenerator;
+import br.com.totvs.fluig.service.WidgetGenerator;
 
 import com.totvs.technology.wcm.common.WCMRestResult;
 import com.totvs.technology.wcm.sdk.rest.WCMRest;
@@ -27,42 +36,23 @@ public class SecurityRest extends WCMRest {
     
     @POST
 	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/widget")
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Response getWidget(@javax.ws.rs.core.Context HttpServletRequest req, @PathParam("code") String code) {
+	public Response getWidget(@javax.ws.rs.core.Context HttpServletRequest req, @PathParam("dependecies") String dependecies) {
     	
-    	LOGGER.info("getSecureCredentials code:" + code);
-    	
+    	LOGGER.info("getWidget");
+    	    	
     	String versionFluig;
-    	String packageName;
-    	String name;
-    	String listDependencies;
+    	String nameApp = "totvs_something";
+		String packageName = "com.totvs.fluig";
+		String dependencies = "org,abc";
 
-		
-    	
-    	
-    	String user;
-		String pass;
-
-    	switch (code) {
-    		case "fluig":
-    			user = "JV.TDI.PORTAIS@totvs.com.br";
-    			pass = "teste@123";
-    			break;
-    		case "portal":
-    			user = "JV.TDI.PORTAIS@totvs.com.br";
-    			pass = "totvs@123";
-    			break;
-    		default:
-    			user = "";
-    			pass = "";
-    	}		
+    	WidgetGenerator wdgt = new WidgetGeneratorImpl();
 
 		try {
-
-			String result = user + pass;
-
-    		return this.buildJSONResponse(new WCMRestResult(result));
+	    	String finalPath = wdgt.generate(nameApp, packageName, dependencies);
+	    	return this.buildJSONResponse(new WCMRestResult(finalPath));
 
     	} catch (Exception e){
 
