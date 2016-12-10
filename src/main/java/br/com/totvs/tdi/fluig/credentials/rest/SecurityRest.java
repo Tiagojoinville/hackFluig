@@ -30,10 +30,19 @@ public class SecurityRest extends WCMRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/widget")
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Response getWidget(@javax.ws.rs.core.Context HttpServletRequest req, @QueryParam("dependecies") String dependencies,
-			@QueryParam("nameApp") String nameApp, @QueryParam("packageName") String packageName, @QueryParam("versionFluig") String versionFluig) {
+	public Response getWidget(@javax.ws.rs.core.Context HttpServletRequest req, 
+			@QueryParam("dependencies") String dependencies,
+			@QueryParam("nameApp") String nameApp,
+			@QueryParam("packageName") String packageName, 
+			@QueryParam("versionFluig") String versionFluig) {
     	
     	LOGGER.info("getWidget");
+    	
+    	LOGGER.info("dependencies "+dependencies);
+    	LOGGER.info("nameApp "+nameApp);
+    	LOGGER.info("packageName "+packageName);
+    	LOGGER.info("versionFluig "+ versionFluig);
+    	
     	    	
     	//String versionFluig;
     	//String  = "totvs_something";

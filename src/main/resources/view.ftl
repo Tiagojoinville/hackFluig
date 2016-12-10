@@ -12,10 +12,18 @@
 	<div class="col-sm-12 col-md-6"> 
 		<h2>Project Metadata</h2>
 		<p>Artifact coordinates</p>
+		
+		<div class="form-group groupid-form-group">
+		<select id="selectVersion" class="btn dropdown-toggle btn-default">
+		  <option>1.5.0</option>
+		  <option>1.5.12</option>
+		  <option>1.6.0</option>
+		</select>
+		</div>
 		<div class="form-group groupid-form-group">
 			<label for="groupId" class="control-label">Group</label>
 			<input tabindex="3" id="groupId" class="form-control" type="text"
-				value="com.example" name="groupId">
+				value="com.example" namel="groupId">
 		</div>
 		<div class="form-group artifactid-form-group">
 			<label for="artifactId" class="control-label">Artifact</label>
@@ -32,7 +40,7 @@
 			<label for="autocomplete" class="control-label">Search for dependencies</label>
 			<span class="twitter-typeahead" style="position: relative; display: inline-block;">
 						
-					<input type="text" class="form-control" id="tokenfield-typeahead" value="rest,,ojdbc" />
+					<input type="text" class="form-control" id="tokenfield-typeahead" value="rest,maven,ojdbc" />
 						
 						<pre aria-hidden="true"
 							style="position: absolute; visibility: hidden; white-space: pre; font-family: monospace; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">spring</pre>
@@ -45,11 +53,17 @@
 	</div>
 	
 	<div class="col-sm-12 col-md-6">
-	  	<button type="submit" id="btn-generator" tabindex="12" class="btn btn-primary btn-lg">
+	  	<button type="button" id="btn-generator" onclick="ConsultaPropostaTdi.getWidgets();" tabindex="12" class="btn btn-success">
 		Generate Project
-		<kbd>alt + ⏎</kbd>
 		</button>
    	</div>
+   	
+  	<div class="col-sm-12 col-md-6 alert alert-success" id="myElem"
+	style="display:none;" role="alert">Well done! You successfully read this
+	important alert message.
+	</div>
+
+
 		
 </div>
 </div>

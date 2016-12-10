@@ -21,7 +21,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 
 		String zipFile = "";
 		
-		String dirHome = "/tmp/fluig/";
+		String dirHome = "D:\\fluig\\jboss\\standalone\\tmp\\";
 		
 		System.out.println("Inicio");
 
@@ -30,7 +30,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		 */
 		FolderGenerator folderGenerator = new FolderGeneratorImpl();
 		
-		String tempFolder = folderGenerator.generateFolder(dirHome + "/temp/");
+		String tempFolder = folderGenerator.generateFolder(dirHome + "\\temp\\");
 		String srcFolder = folderGenerator.generateSrcFolder(tempFolder);
 		String mainFolder = folderGenerator.generateMainFolder(srcFolder);
 		
@@ -75,7 +75,7 @@ public class WidgetGeneratorImpl implements WidgetGenerator {
 		/*
 		 * ZIP
 		 */
-		File directoryToZip = new File(dirHome + "/temp/");
+		File directoryToZip = new File(dirHome + "\\temp\\");
 
 		List<File> fileList = new ArrayList<File>();
 		try {

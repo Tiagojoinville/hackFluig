@@ -71,22 +71,28 @@ var ConsultaPropostaTdi = SuperWidget.extend({
     
 	getWidgets: function() {
 		
-		var url = "/totvs_tdi_secure_credentials/api/rest/generate/widget/"; 
+		
 		console.log(url);
-		var datakeys = $('#tokenfield-typeahead').val()
-		var params = { "dependecies": datakeys, "userCode": WCMAPI.userCode };
+		var datakeys = $('#tokenfield-typeahead').val();
+		var packageName = $('#groupId').val();
+		var nameApp = $('#artifactId').val();
+		var versionFluig = $('#selectVersion').val();
+		
+		var url = "/totvs_tdi_secure_credentials/api/rest/generate/widget/?dependencies=" + datakeys + "&nameApp=" + nameApp + "&packageName=" + packageName + "&versionFluig=" + versionFluig; 
 		
 		$.ajax({
 			type: "POST",
 			dataType: "json",
 			url: url,
 			contentType: "application/json",
-			data: JSON.stringify(params),
 			success: function (data, status, xhr) {
-				
 				console.log("SUCESSO");
-				var url = data.value;
-				location.href = url;
+				$("#myElem").show();
+	               setTimeout(function() { $("#myElem").hide(); }, 5000);
+          
+            	  // console.log(data.value);
+						//document.href = data.content;
+			
 			}
 		});
 		
