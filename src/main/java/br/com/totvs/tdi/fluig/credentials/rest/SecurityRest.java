@@ -8,11 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -31,10 +27,8 @@ import com.totvs.technology.wcm.sdk.rest.WCMRest;
 public class SecurityRest extends WCMRest {
     
     private static Logger LOGGER = LoggerFactory.getLogger(SecurityRest.class);
-    
-    
-    
-    @POST
+
+    @GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/widget")
@@ -61,8 +55,4 @@ public class SecurityRest extends WCMRest {
 
     	}
     }
-
-   
-    
 }
-

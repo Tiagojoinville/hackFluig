@@ -16,5 +16,9 @@ public interface FileGenerator {
 	
 	public void createView(String path, String nameApp);
 
+	public void createWebXml(String path);
+
+    public void createRest(String path, String nameApp, String dependencies);
+
 	public void createPom(String path, String nameApp, String packageName,String versionId, List<ArtefatosNexus> lstArtefanatos);
 }
