@@ -11,4 +11,6 @@ public interface FileGenerator {
 	public void createEdit(String path, String nameApp);
 	
 	public void createView(String path, String nameApp);
+	
+	public void createPom(String path, String nameApp, String dependencies);
 }
